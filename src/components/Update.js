@@ -10,8 +10,6 @@ const Update = () => {
 
   const [updateData, setUpdateData] = useState();
 
-  console.log("updateData",updateData)
-
   const { users, loading } = useSelector((state) => state.app);
 
   useEffect(() => {

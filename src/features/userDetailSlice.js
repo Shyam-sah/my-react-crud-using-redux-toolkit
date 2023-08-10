@@ -5,7 +5,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const createUser = createAsyncThunk(
   "createUser",
   async (data, { rejectWithValue }) => {
-    console.log("data", data);
     const response = await fetch(
       "https://641dd63d945125fff3d75742.mockapi.io/crud",
       {
@@ -60,7 +59,6 @@ export const getAllUsers = createAsyncThunk(
 
     try {
       const result = await response.json();
-      console.log("result",result);
       return result;
     } catch (error) {
       return rejectWithValue(error);
@@ -79,7 +77,6 @@ export const deleteUser = createAsyncThunk(
 
     try {
       const result = await response.json();
-      console.log("this delete",result)
       return result;
 
     } catch (error) {

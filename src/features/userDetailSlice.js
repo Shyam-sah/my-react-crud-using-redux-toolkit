@@ -60,6 +60,7 @@ export const getAllUsers = createAsyncThunk(
 
     try {
       const result = await response.json();
+      console.log("result",result);
       return result;
     } catch (error) {
       return rejectWithValue(error);
@@ -78,6 +79,7 @@ export const deleteUser = createAsyncThunk(
 
     try {
       const result = await response.json();
+      console.log("this delete",result)
       return result;
 
     } catch (error) {
@@ -92,10 +94,20 @@ export const userDetail = createSlice({
     users: [],
     loading: false,
     error: null,
-    searchData: [],
   },
 
   extraReducers: {
+    [createUser.pending]: (state) => {
+      state.loading = true;
+    },
+    [createUser.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.users.push(action.payload);
+    },
+    [createUser.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
   
     [getAllUsers.pending]: (state) => {
       state.loading = true;

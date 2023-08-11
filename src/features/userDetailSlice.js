@@ -152,6 +152,5 @@ export const userDetail = createSlice({
 
 export default userDetail.reducer;
 
-export const { searchUser } = userDetail.actions;
 
 
